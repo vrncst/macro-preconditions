@@ -1,0 +1,6 @@
+#modeb(1,handfree).
+#modeb(1,light).
+#modeb(2,match_used(var(match))).
+#modeb(2,fuse_mended(var(fuse))).
+
+#bias("saturate.").
