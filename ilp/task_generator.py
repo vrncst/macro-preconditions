@@ -12,23 +12,22 @@ def is_macro_prefix(macro_a, macro_b):
 def format_contexts(examples):
     formatted_examples = []
     #TODO filter duplicates?
-    for i, example in enumerate(examples, 1):
+    for _, example in enumerate(examples, 1):
         state = example['state']
         params = example['params']
-        flat_params = [p for sublist in params for p in sublist]
-        param_str = ','.join(flat_params)
+        param_str = ','.join(str(p) for p in params)
         fluents = []
         for entry in state:
-            if entry['value']:
-                fluent = entry['fluent']
-                args = entry['args']
-                if entry['value'] != True and not args:
-                    args = [str(entry['value'])]
-                if args:
-                    fluent_str = f"{fluent}({','.join(args)})."
-                else:
-                    fluent_str = f"{fluent}."
-                fluents.append(fluent_str)
+            fluent = entry['fluent']
+            args = entry['args']
+            if not args and not isinstance(entry['value'], bool):
+                args = [str(entry['value'])]
+            if args:
+                prefix = 'not ' if entry['value'] == False else ''
+                fluent_str = f"{prefix}{fluent}({','.join(args)})."
+            else:
+                fluent_str = f"{fluent}."
+            fluents.append(fluent_str)
         context_str = ' '.join(fluents)
         example = {'context': context_str, 'params': param_str}
         formatted_examples.append(example)
@@ -38,17 +37,16 @@ def generate_examples(macro, plans):
     inc_examples_list = []
     exc_examples_list = []
     macro_action_names = []
-    macro_variables = 0
+    macro_variables = []
     _objects = {}
     for step in macro:
          macro_action_names.append(step['action'])
-         macro_variables += len(step['variables'])
+         macro_variables.append(v for v in step['variables'])
+    unique_macro_variables = list(dict.fromkeys(v for sub in macro_variables for v in sub))
     macro_len = len(macro_action_names)
-    print(macro_variables)
-    print(list('_' for _ in range(macro_variables)))
     for plan in plans:
         problem_objects = plan['problem_objects']
-        trace = plan['trace']
+        trace = plan['trace'] 
         for key, obj in problem_objects.items():
             if key not in _objects:
                 _objects[key] = set()
@@ -59,15 +57,16 @@ def generate_examples(macro, plans):
             state_before_macro = trace[i - 1]['state']
             if actions[i:i + macro_len] == macro_action_names:
                 macro_params = [trace[i + j]['action']['params'] for j in range(macro_len)]
+                unique_macro_params = list(dict.fromkeys(p for sub in macro_params for p in sub))
                 inc_examples_list.append({
                     "state": state_before_macro,
-                    "params": macro_params
+                    "params": unique_macro_params
                 })
                 i += macro_len - 1 # we're skipping intermediate states to avoid adding them as negative examples, not sure it's what we want
             else:
                 exc_examples_list.append({
                     "state": state_before_macro,
-                    "params": ['_' for _ in range(macro_variables)]
+                    "params": ['_' for _ in range(len(unique_macro_variables))]
                 })
                 i += 1
     objects = {key: list(values) for key, values in _objects.items()}
@@ -80,17 +79,34 @@ def generate_background(objects):
     bk = "\n".join(items)
     return bk
 
+# def generate_modeh(macro_name, macro, domain_actions):
+#     action_to_types = {action['name']: action['arg_types'] for action in domain_actions}
+#     types_sequence = []
+#     for step in macro:
+#         action = step['action']
+#         variables = step['variables']
+#         arg_types = action_to_types.get(action) #TODO handle non parametric actions
+#         for i in range(len(variables)):
+#             t = arg_types[i] if i < len(arg_types) else arg_types[-1]
+#             types_sequence.append(t.lower())
+#     args_str = ",".join(f"var({t})" for t in types_sequence)
+#     modeh_line = f"#modeh({macro_name}({args_str})).\n\n"
+#     return modeh_line
+
 def generate_modeh(macro_name, macro, domain_actions):
     action_to_types = {action['name']: action['arg_types'] for action in domain_actions}
-    types_sequence = []
+    
+    seen_vars = {}
     for step in macro:
         action = step['action']
         variables = step['variables']
-        arg_types = action_to_types.get(action) #TODO handle non parametric actions
-        for i in range(len(variables)):
-            t = arg_types[i] if i < len(arg_types) else arg_types[-1]
-            types_sequence.append(t.lower())
-    args_str = ",".join(f"var({t})" for t in types_sequence)
+        arg_types = action_to_types.get(action, [])
+        for i, var in enumerate(variables):
+            if var not in seen_vars:
+                t = arg_types[i] if i < len(arg_types) else arg_types[-1]
+                seen_vars[var] = t.lower()
+
+    args_str = ",".join(f"var({t})" for t in seen_vars.values())
     modeh_line = f"#modeh({macro_name}({args_str})).\n\n"
     return modeh_line
 
@@ -110,14 +126,14 @@ def format_examples(macro_name, inc_contexts, exc_contexts):
 
 def parse_data():
     if len(sys.argv) != 2:
-        print("Usage: python gen_ilp_task.py <path_to_domain_folder>")
+        print("Usage: python task_generator.py <path_to_domain_folder>")
         sys.exit(1)
     file_path = sys.argv[1]
     if not os.path.isdir(file_path):
         print(f"Error: Directory '{file_path}' does not exist.")
         sys.exit(1)
     try:
-        with open(os.path.join(file_path, 'database_macros.json'), 'r') as f:
+        with open(os.path.join(file_path, 'all_selected_macros.json'), 'r') as f:
             # list of macros, each macro is a list of <action, variables> dicts
             macros = json.load(f)             
     except json.JSONDecodeError as e:

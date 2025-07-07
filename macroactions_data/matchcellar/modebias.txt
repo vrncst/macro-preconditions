@@ -4,3 +4,4 @@
 #modeb(2,fuse_mended(var(fuse))).
 
 #bias("saturate.").
+#maxv(4).
