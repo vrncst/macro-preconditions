@@ -23,7 +23,7 @@ def format_contexts(examples):
             if not args and not isinstance(entry['value'], bool):
                 args = [str(entry['value'])]
             if args:
-                prefix = 'not ' if entry['value'] == False else ''
+                prefix = 'not_' if entry['value'] == False else ''
                 fluent_str = f"{prefix}{fluent}({','.join(args)})."
             else:
                 fluent_str = f"{fluent}."
@@ -78,20 +78,6 @@ def generate_background(objects):
     items = [f"{key.lower()}({item})." for key, items in objects.items() for item in items]
     bk = "\n".join(items)
     return bk
-
-# def generate_modeh(macro_name, macro, domain_actions):
-#     action_to_types = {action['name']: action['arg_types'] for action in domain_actions}
-#     types_sequence = []
-#     for step in macro:
-#         action = step['action']
-#         variables = step['variables']
-#         arg_types = action_to_types.get(action) #TODO handle non parametric actions
-#         for i in range(len(variables)):
-#             t = arg_types[i] if i < len(arg_types) else arg_types[-1]
-#             types_sequence.append(t.lower())
-#     args_str = ",".join(f"var({t})" for t in types_sequence)
-#     modeh_line = f"#modeh({macro_name}({args_str})).\n\n"
-#     return modeh_line
 
 def generate_modeh(macro_name, macro, domain_actions):
     action_to_types = {action['name']: action['arg_types'] for action in domain_actions}
