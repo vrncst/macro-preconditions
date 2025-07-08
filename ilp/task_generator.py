@@ -20,8 +20,8 @@ def format_contexts(examples):
         for entry in state:
             fluent = entry['fluent']
             args = entry['args']
-            if not args and not isinstance(entry['value'], bool):
-                args = [str(entry['value'])]
+            if not isinstance(entry['value'], bool):
+                args.append(str(entry['value']))
             if args:
                 prefix = 'not_' if entry['value'] == False else ''
                 fluent_str = f"{prefix}{fluent}({','.join(args)})."
@@ -119,7 +119,7 @@ def parse_data():
         print(f"Error: Directory '{file_path}' does not exist.")
         sys.exit(1)
     try:
-        with open(os.path.join(file_path, 'all_selected_macros.json'), 'r') as f:
+        with open(os.path.join(file_path, 'selected_3vars.json'), 'r') as f:
             # list of macros, each macro is a list of <action, variables> dicts
             macros = json.load(f)             
     except json.JSONDecodeError as e:
