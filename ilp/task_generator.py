@@ -19,12 +19,13 @@ def format_contexts(examples):
         fluents = []
         for entry in state:
             fluent = entry['fluent']
-            args = entry['args']
+            args = entry['args'][:]
             if not isinstance(entry['value'], bool):
                 args.append(str(entry['value']))
             if args:
                 prefix = 'not_' if entry['value'] == False else ''
                 fluent_str = f"{prefix}{fluent}({','.join(args)})."
+                print(fluent_str)
             else:
                 fluent_str = f"{fluent}."
             fluents.append(fluent_str)
