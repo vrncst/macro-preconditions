@@ -25,12 +25,11 @@ def format_contexts(examples):
             if args:
                 prefix = 'not_' if entry['value'] == False else ''
                 fluent_str = f"{prefix}{fluent}({','.join(args)})."
-                print(fluent_str)
             else:
                 fluent_str = f"{fluent}."
             fluents.append(fluent_str)
         context_str = ' '.join(fluents)
-        example = {'context': context_str, 'params': param_str}
+        example = {'context': context_str.lower(), 'params': param_str.lower()}
         formatted_examples.append(example)
     return formatted_examples
 
@@ -76,7 +75,7 @@ def generate_examples(macro, plans):
     return objects, inc_contexts, exc_contexts
 
 def generate_background(objects):
-    items = [f"{key.lower()}({item})." for key, items in objects.items() for item in items]
+    items = [f"{key.lower()}({item.lower()})." for key, items in objects.items() for item in items]
     bk = "\n".join(items)
     return bk
 
