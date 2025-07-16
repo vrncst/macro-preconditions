@@ -1,34 +1,23 @@
-
-
-%battery(0..100).
-
-%#constant(b, 10).
-%#constant(b, 30).
-%#constant(b, 50).
-%#constant(b, 70).
-%#constant(b, 90).
+#constant(b, nopallet).
+#constant(p, depot).
 
 #modeb(1,robot_at(var(robot), var(position)), (positive)).
 #modeb(1,robot_has(var(robot), var(pallet)), (positive)).
+#modeb(1,robot_has(var(robot), const(b)), (positive)).
 #modeb(1,position_has(var(position), var(pallet)), (positive)).
+#modeb(1,position_has(var(position), const(b)), (positive)).
+
 #modeb(1,at_depot(var(pallet)), (positive)).
 #modeb(1,treated(var(pallet), var(position)), (positive)).
 #modeb(1,ready(var(pallet), var(position)), (positive)).
 
-%#modeb(1,battery_level(var(robot), var(battery)), (positive)).
-
-%#modeb(1,not_robot_at(var(robot), var(position)), (positive)).
-%#modeb(1,not_robot_has(var(robot), var(pallet)), (positive)).
-%#modeb(1,not_position_has(var(position), var(pallet)), (positive)).
+#modeb(1,is_moving(var(robot))).
 
 #modeb(1,not_at_depot(var(pallet)), (positive)).
 #modeb(1,not_treated(var(pallet), var(position)), (positive)).
 #modeb(1,not_ready(var(pallet), var(position)), (positive)).
 
-%#modeb(1,not_battery_level(var(robot), var(battery)), (positive)).
+%#modeb(1,var(position) != depot).
+%#modeb(1,var(pallet) != nopallet).
 
-%#modeb(1,var(battery) < const(b), (positive)).
-%#modeb(1,var(battery) > const(b), (positive)).
-
-%#bias("saturate.").
 #maxv(5).

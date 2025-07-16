@@ -1,0 +1,17 @@
+position\(depot\)\.
+position\(unknown\)\.
+position_has\(depot,nopallet\)\.
+position_has\(unknown,nopallet\)\.
+not_treated\(nopallet,[^\)]+\)\.
+treated\(nopallet,[^\)]+\)\.
+not_ready\(nopallet,[^\)]+\)\.
+ready\(nopallet,[^\)]+\)\.
+at_depot\(nopallet\)\.
+not_treated\([^\),]+,unknown\)\.
+treated\([^\),]+,unknown\)\.
+not_ready\([^\),]+,unknown\)\.
+ready\([^\),]+,unknown\)\.
+not_treated\([^\),]+,depot\)\.
+not_ready\([^\),]+,depot\)\.
+
+robot_at\(([^,\)]+),unknown\)\. => is_moving(\1).
