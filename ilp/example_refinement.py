@@ -32,7 +32,12 @@ def process_file(file_path, removal_patterns, substitution_patterns):
     with open(file_path, 'r', encoding=ENCODING) as f:
         lines = f.readlines()
 
-    cleaned_lines = [clean_line(line, removal_patterns, substitution_patterns) for line in lines]
+    cleaned_lines = []
+    for line in lines:
+        cleaned = clean_line(line, removal_patterns, substitution_patterns)
+        if '{}).' in cleaned:
+            continue  
+        cleaned_lines.append(cleaned)
 
     with open(file_path, 'w', encoding=ENCODING) as f:
         f.writelines(cleaned_lines)

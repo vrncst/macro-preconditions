@@ -33,43 +33,117 @@ def format_contexts(examples):
         formatted_examples.append(example)
     return formatted_examples
 
+def gen_variable_binding(macro_variables, trace, start_idx):
+    """
+    Checks if the variable bindings in the trace match the macro variables consistently.
+    Returns a binding dictionary if consistent, otherwise None.
+    """
+    variable_binding = {}
+    used_values = set()
+    for j, macro_vars in enumerate(macro_variables):
+        trace_vars = trace[start_idx + j]['action']['params']
+        if len(macro_vars) != len(trace_vars):
+            return None
+        for mv, tv in zip(macro_vars, trace_vars):
+            if mv in variable_binding:
+                if variable_binding[mv] != tv:
+                    return None
+            else:
+                if tv in used_values:
+                    return None
+                variable_binding[mv] = tv
+                used_values.add(tv)
+    return variable_binding
+
+# def generate_examples(macro, plans):
+#     inc_examples_list = []
+#     exc_examples_list = []
+#     macro_action_names = []
+#     macro_variables = []
+#     _objects = {}
+#     for step in macro:
+#          macro_action_names.append(step['action'])
+#          macro_variables.append(v for v in step['variables'])
+#     unique_macro_variables = list(dict.fromkeys(v for sub in macro_variables for v in sub))
+#     macro_len = len(macro_action_names)
+#     for plan in plans:
+#         problem_objects = plan['problem_objects']
+#         trace = plan['trace'] 
+#         for key, obj in problem_objects.items():
+#             if key not in _objects:
+#                 _objects[key] = set()
+#             _objects[key].update(obj)
+#         actions = [entry['action']['name'] if entry['action'] != 'null' else None for entry in trace]
+#         i=0
+#         while i < len(actions) - macro_len + 1:
+#             state_before_macro = trace[i - 1]['state']
+#             if actions[i:i + macro_len] == macro_action_names:
+#                 macro_params = [trace[i + j]['action']['params'] for j in range(macro_len)]
+#                 unique_macro_params = list(dict.fromkeys(p for sub in macro_params for p in sub))
+#                 inc_examples_list.append({
+#                     "state": state_before_macro,
+#                     "params": unique_macro_params
+#                 })
+#                 i += macro_len - 1 # we're skipping intermediate states to avoid adding them as negative examples, not sure it's what we want
+#             else:
+#                 exc_examples_list.append({
+#                     "state": state_before_macro,
+#                     "params": ['_' for _ in range(len(unique_macro_variables))]
+#                 })
+#                 i += 1
+#     objects = {key: list(values) for key, values in _objects.items()}
+#     inc_contexts = format_contexts(inc_examples_list)
+#     exc_contexts = format_contexts(exc_examples_list)
+#     return objects, inc_contexts, exc_contexts
+
 def generate_examples(macro, plans):
     inc_examples_list = []
     exc_examples_list = []
-    macro_action_names = []
-    macro_variables = []
-    _objects = {}
-    for step in macro:
-         macro_action_names.append(step['action'])
-         macro_variables.append(v for v in step['variables'])
+    macro_action_names = [step['action'] for step in macro]
+    macro_variables = [step['variables'] for step in macro]
     unique_macro_variables = list(dict.fromkeys(v for sub in macro_variables for v in sub))
-    macro_len = len(macro_action_names)
+    _objects = {}
+    macro_len = len(macro)
+
     for plan in plans:
         problem_objects = plan['problem_objects']
-        trace = plan['trace'] 
+        trace = plan['trace']
+
         for key, obj in problem_objects.items():
-            if key not in _objects:
-                _objects[key] = set()
-            _objects[key].update(obj)
+            _objects.setdefault(key, set()).update(obj)
+
         actions = [entry['action']['name'] if entry['action'] != 'null' else None for entry in trace]
-        i=0
-        while i < len(actions) - macro_len + 1:
-            state_before_macro = trace[i - 1]['state']
-            if actions[i:i + macro_len] == macro_action_names:
-                macro_params = [trace[i + j]['action']['params'] for j in range(macro_len)]
-                unique_macro_params = list(dict.fromkeys(p for sub in macro_params for p in sub))
-                inc_examples_list.append({
-                    "state": state_before_macro,
-                    "params": unique_macro_params
-                })
-                i += macro_len - 1 # we're skipping intermediate states to avoid adding them as negative examples, not sure it's what we want
-            else:
+
+        i = 0
+        while i <= len(actions) - macro_len:
+            if actions[i:i + macro_len] != macro_action_names:
+                state_before = trace[i - 1]['state'] if i > 0 else []
                 exc_examples_list.append({
-                    "state": state_before_macro,
-                    "params": ['_' for _ in range(len(unique_macro_variables))]
+                    "state": state_before,
+                    "params": ['_' for _ in unique_macro_variables]
                 })
                 i += 1
-    objects = {key: list(values) for key, values in _objects.items()}
+                continue
+
+            variable_binding = gen_variable_binding(macro_variables, trace, i)
+
+            state_before = trace[i - 1]['state'] if i > 0 else []
+
+            if variable_binding is not None:
+                ordered_params = [variable_binding[v] for v in unique_macro_variables]
+                inc_examples_list.append({
+                    "state": state_before,
+                    "params": ordered_params
+                })
+                i += macro_len
+            else:
+                exc_examples_list.append({
+                    "state": state_before,
+                    "params": ['_' for _ in unique_macro_variables]
+                })
+                i += 1
+
+    objects = {key: list(vals) for key, vals in _objects.items()}
     inc_contexts = format_contexts(inc_examples_list)
     exc_contexts = format_contexts(exc_examples_list)
     return objects, inc_contexts, exc_contexts

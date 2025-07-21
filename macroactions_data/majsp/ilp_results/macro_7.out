@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 1                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 2                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 3                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 4                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 5                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 3.353s
+%% Hypothesis Space Generation             : 0.006s
+%% Conflict analysis                       : 8215.15s
+%%   - Positive Examples                   : 8215.15s
+%% Counterexample search                   : 5.252s
+%%   - CDOEs                               : 0.198s
+%%   - CDPIs                               : 5.056s
+%% Hypothesis Search                       : 5613.42s
+%% Total                                   : 16303.6s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1 (a total of 728 counterexamples found) 
+%% Found hypothesis: [17] 3 
+%% macro_7(V1, V2, V3) :- position_has(V3, V2); robot_has(V1, V4). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1000 (a total of 4090 counterexamples found) 
+%% Found hypothesis: [13] 3 
+%% macro_7(V1, V2, V3) :- not_ready(V2, V3); robot_has(V1, nopallet). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1006 (a total of 1778 counterexamples found) 
+%% Found hypothesis: [853] 4 
+%% macro_7(V1, V2, V3) :- not_ready(V2, V4); position_has(V3, V2); robot_at(V1, V4). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1028 (a total of 818 counterexamples found) 
+%% Found hypothesis: [7052] 5 
+%% macro_7(V1, V2, V3) :- not_treated(V2, V5); position_has(V3, V2); robot_at(V4, depot); robot_at(V1, V5). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex10 (a total of 687 counterexamples found) 
+UNSATISFIABLE

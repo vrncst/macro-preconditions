@@ -1,0 +1,570 @@
+[
+    {
+        "actions": [
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v3, v2)",
+                "robot_has(v1, v3)",
+                "robot_at(v1, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "load_at_depot",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v3"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v2, v3)",
+                "at_depot(v5)",
+                "robot_has(v1, nopallet)",
+                "robot_at(v4, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v2, v4)",
+                "position_has(v3, v5)",
+                "robot_at(v1, v4)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v2, v3)",
+                "position_has(v4, nopallet)",
+                "robot_at(v1, v4)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "load_at_depot",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v3"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v2, v3)",
+                "at_depot(v5)",
+                "robot_has(v1, nopallet)",
+                "robot_at(v4, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v3, v2)",
+                "robot_has(v1, v3)",
+                "robot_at(v1, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v3, v2)",
+                "robot_at(v1, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v2, v5)",
+                "position_has(v3, v2)",
+                "robot_at(v4, depot)",
+                "robot_at(v1, v5)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v2, v5)",
+                "position_has(v3, v2)",
+                "robot_has(v1, v4)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready(v4, v3)",
+                "not_treated(v2, v5)",
+                "robot_has(v1, v4)",
+                "robot_at(v1, v5)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v2, v3)",
+                "position_has(v4, nopallet)",
+                "robot_at(v1, v4)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v3, v2)",
+                "robot_has(v1, v3)",
+                "robot_at(v4, depot)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "move",
+                "variables": [
+                    "v1",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v3",
+                    "v2"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v4, v2)",
+                "robot_has(v1, v3)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v2, v4)",
+                "position_has(v3, v5)",
+                "robot_at(v1, v4)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "make_treatment",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "load",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_treated(v2, v5)",
+                "position_has(v3, v2)",
+                "robot_has(v1, v4)"
+            ]
+        ]
+    }
+]

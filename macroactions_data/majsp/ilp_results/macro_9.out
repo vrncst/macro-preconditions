@@ -1,0 +1,38 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 1                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 2                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 3                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 4                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 3.322s
+%% Hypothesis Space Generation             : 0.006s
+%% Conflict analysis                       : 1929.91s
+%%   - Positive Examples                   : 1929.91s
+%% Counterexample search                   : 4.134s
+%%   - CDOEs                               : 0.21s
+%%   - CDPIs                               : 3.924s
+%% Hypothesis Search                       : 4535.28s
+%% Total                                   : 8572.87s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Searching for counterexample... 
+%% Found positive counterexample: ex0 (a total of 385 counterexamples found) 
+%% Found hypothesis: [2] 3 
+%% macro_9(V1, V2, V3) :- not_ready(V2, V3); robot_at(V1, V4). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1000 (a total of 3825 counterexamples found) 
+%% Found hypothesis: [526] 4 
+%% macro_9(V1, V2, V3) :- not_ready(V4, V3); not_at_depot(V2); robot_has(V1, V4). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1002 (a total of 2990 counterexamples found) 
+%% Found hypothesis: [10225] 5 
+%% macro_9(V1, V2, V3) :- not_ready(V4, V3); not_treated(V2, V5); robot_has(V1, V4); robot_at(V1, V5). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1004 (a total of 1246 counterexamples found) 
+UNSATISFIABLE

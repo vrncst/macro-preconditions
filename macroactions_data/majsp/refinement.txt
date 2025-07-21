@@ -1,5 +1,6 @@
 position\(depot\)\.
 position\(unknown\)\.
+pallet\(nopallet\)\.
 position_has\(depot,nopallet\)\.
 position_has\(unknown,nopallet\)\.
 not_treated\(nopallet,[^\)]+\)\.
