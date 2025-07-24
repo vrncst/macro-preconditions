@@ -5,6 +5,29 @@ import argparse
 
 ENCODING = 'utf-8'
 
+def is_line_valid(line):
+    comparisons = re.findall(r'(V\d+)\s*(>=|<=)\s*(\d+)', line)
+    var_constraints = {}
+
+    for var, op, val in comparisons:
+        val = int(val)
+        if var not in var_constraints:
+            var_constraints[var] = {'min': None, 'max': None}
+
+        if op == '>=':
+            if var_constraints[var]['min'] is None or val > var_constraints[var]['min']:
+                var_constraints[var]['min'] = val
+        elif op == '<=':
+            if var_constraints[var]['max'] is None or val < var_constraints[var]['max']:
+                var_constraints[var]['max'] = val
+
+    for bounds in var_constraints.values():
+        min_val = bounds['min']
+        max_val = bounds['max']
+        if min_val is not None and max_val is not None and min_val > max_val:
+            return False
+    return True
+
 def load_macroactions(json_path):
     with open(json_path, 'r', encoding=ENCODING) as f:
         return json.load(f)
@@ -34,9 +57,11 @@ def process_file(file_path, patterns):
     with open(file_path, 'r', encoding=ENCODING) as f:
         lines = f.readlines()
 
-    cleaned = [line for line in lines if not should_remove_line(line, patterns)]
+    cleaned = [
+        line for line in lines
+        if not should_remove_line(line, patterns) and is_line_valid(line)
+    ]
 
-    #TODO auto append search space to files
     with open(file_path, 'w', encoding=ENCODING) as f:
         f.writelines(cleaned)
 

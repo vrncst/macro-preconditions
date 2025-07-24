@@ -114,7 +114,7 @@ def generate_examples(macro, plans):
 
         actions = [entry['action']['name'] if entry['action'] != 'null' else None for entry in trace]
 
-        i = 0
+        i = 1
         while i <= len(actions) - macro_len:
             if actions[i:i + macro_len] != macro_action_names:
                 state_before = trace[i - 1]['state'] if i > 0 else []

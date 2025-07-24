@@ -14,6 +14,7 @@ fluent boolean completed(integer [0, 0] i_0, Kit k);
 fluent integer [0, 4] robot_cnt(Robot r);
 fluent integer [0, 1] kit_cnt;
 fluent integer [0, 10] battery(Robot r);
+
 action move(Robot r, Location l_from, Location l_to) {
    duration >= distance(l_from, l_to) and duration <= distance(l_from, l_to);
    [ start ] (not robot_busy(r));

@@ -1,0 +1,16 @@
+[move] 
+not human_busy
+robot_at\(V1\,V2\)
+
+[load]
+not robot_busy\(V1\)
+robot_at\(V1\,V2\)
+is_present\(V3\,V2\)
+components_on_robot\(V1\,V5\,empty\)
+components_on_kit\(V4\,V5\,V3\)
+
+[prepare_unload]
+not human_busy
+
+[unload]
+not robot_busy\(V1\)

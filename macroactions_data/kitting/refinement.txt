@@ -1,0 +1,7 @@
+(?<!\w)component\(empty\)\.(?!\w)
+(?<!\w)not_is_present\(empty,[^()]+\)\.(?!\w)
+(?<!\w)not_robot_at\([^()]+\)\.(?!\w)
+(?<!\w)not_kit_cnt\([^()]+\)\.(?!\w)
+(?<!\w)distance\([^()]+\)\.(?!\w)
+
+integer\[0, 0\] => kit_i

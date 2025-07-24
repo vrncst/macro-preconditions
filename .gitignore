@@ -1,3 +1,5 @@
 *.pkl
 *.las
+search_spaces/
+**/search_spaces/
 test

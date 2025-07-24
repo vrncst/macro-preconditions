@@ -1,4 +1,27 @@
+battery_level(1..10).
+index(0..4).
+kit_i(0).
+#constant(c, empty).
+#constant(b, 1..10).
 
 
+#modeb(1,human_busy).
+#modeb(1,robot_busy(var(robot)), (positive)).
+#modeb(1,ready_to_receive(var(kit_i)), (positive)).
+#modeb(1,robot_at(var(robot), var(position)), (positive)).
+#modeb(1,is_present(var(component), var(location)), (positive)).
+#modeb(1,completed(var(kit_i),var(kit)), (positive)).
+#modeb(1,battery(var(robot), var(battery_level)), (positive)).
+#modeb(1,var(battery_level) >= const(b), (positive)).
+#modeb(1,var(battery_level) <= const(b), (positive)).
+#modeb(1,components_on_kit(var(kit),var(index),var(component)), (positive)).
+#modeb(1,components_on_robot(var(robot),var(index),var(component)), (positive)).
+#modeb(1,components_on_robot(var(robot),var(index),const(c)), (positive)).
+#modeb(1,robot_cnt(var(robot), var(index)), (positive)).
 
-TODO
+#modeb(1,not_robot_busy(var(robot)), (positive)).
+#modeb(1,not_ready_to_receive(var(kit_i)), (positive)).
+#modeb(1,not_completed(var(kit_i),var(kit)), (positive)).
+#modeb(1,not_is_present(var(component), var(location)), (positive)).
+
+#maxv(5).
