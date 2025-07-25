@@ -1,7 +1,7 @@
 [move] 
 not human_busy
 robot_at\(V1\,V2\)
-
+ 
 [load]
 not robot_busy\(V1\)
 robot_at\(V1\,V2\)
@@ -14,3 +14,5 @@ not human_busy
 
 [unload]
 not robot_busy\(V1\)
+ready_to_receive(V1)
+not_ready_to_receive(V1)

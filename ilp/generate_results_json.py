@@ -41,8 +41,8 @@ def extract_precon(file_path):
         else:
             i = second_best_idx - 1
 
+        rules = []
         while not "Found hypothesis" in lines[i]:
-            rules = []
             rule_line = lines[i].strip()
             if "macro_" in rule_line:
                 clean_rule = rule_line.lstrip("%").strip()

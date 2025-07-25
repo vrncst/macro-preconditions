@@ -1,0 +1,315 @@
+[
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_ready_to_receive(v1)",
+                "v2 <= 2",
+                "battery(v3, v2)"
+            ],
+            [
+                "not_robot_busy(v2)",
+                "ready_to_receive(v1)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "ready_to_receive(v1)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "unload",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v3"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v3, v2)",
+                "robot_at(v1, v4)",
+                "ready_to_receive(v3)",
+                "robot_busy(v1)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v1, v3)",
+                "not_robot_busy(v2)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "unload",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v1",
+                    "v2",
+                    "v3"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v3"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v3"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v4, v2)",
+                "not_robot_busy(v1)",
+                "ready_to_receive(v3)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v4, v3)",
+                "not_robot_busy(v2)",
+                "ready_to_receive(v1)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "ready_to_receive(v1)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v1, v3)",
+                "not_robot_busy(v2)"
+            ]
+        ]
+    },
+    {
+        "actions": [
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "prepare_unload",
+                "variables": [
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            },
+            {
+                "action": "unload",
+                "variables": [
+                    "v2",
+                    "v3",
+                    "v1"
+                ]
+            }
+        ],
+        "preconditions": [
+            [
+                "not_completed(v1, v3)",
+                "not_robot_busy(v2)"
+            ]
+        ]
+    }
+]

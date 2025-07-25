@@ -1,0 +1,45 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 1                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 2                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 3                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 4                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 5                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 1.271s
+%% Hypothesis Space Generation             : 0.006s
+%% Conflict analysis                       : 176.239s
+%%   - Positive Examples                   : 176.239s
+%% Counterexample search                   : 16.63s
+%%   - CDOEs                               : 0.825s
+%%   - CDPIs                               : 15.804s
+%% Hypothesis Search                       : 179.573s
+%% Total                                   : 452.235s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Searching for counterexample... 
+%% Found positive counterexample: ex0 (a total of 17 counterexamples found) 
+%% Found hypothesis: [2] 2 
+%% macro_1(V1) :- not_completed(V1, V2). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex100 (a total of 9293 counterexamples found) 
+%% Found hypothesis: [0] 2 
+%% macro_1(V1) :- ready_to_receive(V1). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex10 (a total of 1442 counterexamples found) 
+%% Found hypothesis: [162] 4 
+%% macro_1(V1) :- not_completed(V1, V5); robot_cnt(V2, V3); robot_at(V2, V4). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1000 (a total of 5694 counterexamples found) 
+%% Found hypothesis: [139] 4 
+%% macro_1(V1) :- not_completed(V1, V4); not_robot_busy(V2); robot_cnt(V2, V3). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1005 (a total of 3814 counterexamples found) 
+UNSATISFIABLE

@@ -1,0 +1,24 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 1                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                Iteration 2                                 %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Pre-processing                          : 1.623s
+%% Hypothesis Space Generation             : 0.006s
+%% Conflict analysis                       : 183.182s
+%%   - Positive Examples                   : 183.182s
+%% Counterexample search                   : 5.87s
+%%   - CDOEs                               : 0.261s
+%%   - CDPIs                               : 5.609s
+%% Hypothesis Search                       : 326.952s
+%% Total                                   : 852.916s
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Searching for counterexample... 
+%% Found positive counterexample: ex0 (a total of 376 counterexamples found) 
+%% Found hypothesis: [0] 3 
+%% macro_7(V1, V2, V3) :- not_completed(V1, V3); not_robot_busy(V2). 
+%% Searching for counterexample... 
+%% Found positive counterexample: ex1000 (a total of 6014 counterexamples found) 
+UNSATISFIABLE
